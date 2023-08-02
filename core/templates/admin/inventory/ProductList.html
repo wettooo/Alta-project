@@ -1,0 +1,59 @@
+{%extends 'admin/index.html'%}
+<!--Title-->
+{%block title%}Products{%endblock%}
+<!--Content-->
+{%block content%}
+<div class="p-4 mx-2">
+    <div class="d-flex justify-content-between">
+        <div><h3>Inventory</h3></div>
+        <div><a href='/admin/inventory/add'><button class="btn btn-primary">Add Item</button></a></div>
+    </div>
+    
+    <div>
+        <table class="table table-bordered my-4">
+            <thead>
+                <tr>
+                    <th>Product Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Stock In Hand</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for data in datas%}
+                <tr id="{{data.id}}_row">
+                    <td>{{data.id}}</td>
+                    <td>{{data.name}}</td>
+                    <td>$ {{data.price}}</td>
+                    <td>{{data.inventory}}</td>
+                    <td>
+                        <div class="d-flex">
+                            <div><a href="/admin/inventory/edit/{{data.id}}" class="fa fa-pencil text-dark"></a></div>
+                            <div class="fa fa-trash text-danger mx-3" onclick="deleteitem('{{data.id}}', '{{data.id}}_row')"></div>
+                        </div>
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    const deleteitem = (productId, rowId) => {
+        fetch('/products', {
+            method:'DELETE',
+            headers: {'Content-Type': 'application/json'}, 
+            body: JSON.stringify({'PID':productId})
+        }).then(response => response.json())
+        .then(data =>{
+            console.log(data)
+            if (data.res == "Success"){
+                document.getElementById(rowId).remove()
+                calc_cart_total()
+            }
+        })
+        
+    }   
+</script>
+{%endblock%}

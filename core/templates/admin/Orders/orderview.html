@@ -1,0 +1,49 @@
+{%extends 'admin/index.html'%}
+<!--Title-->
+{%block title%}Products{%endblock%}
+<!--Content-->
+{%block content%}
+<div class="p-4 mx-2">
+    <h3 class="my-3">Order Details</h3>
+    <h6>Customer Details</h6>
+    <div class="row">
+        <div class="col-3">
+            <div class="my-3">Name</div>
+            <div class="my-3">Email</div>
+            <div class="my-3">Mobile</div>
+            <div class="my-3">Address</div>
+        </div>
+        <div class="col-4">
+            <div class="my-3">{{customer.name}}</div>
+            <div class="my-3">{{customer.email}}</div>
+            <div class="my-3">{{customer.mobile}}</div>
+            <div class="mt-3">{{customer.address_1}},</div>
+            <div>{{customer.address_2}}, {{customer.city}}, </div>
+            <div>{{customer.state}} {{customer.pincode}}</div>
+        </div>
+    </div>
+    <div>
+        <h6 class="my-4">Order Items</h6>
+        <table class="table table-bordered my-4">
+            <thead>
+                <tr>
+                    <th>Item Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for data in item%}
+                <tr>
+                    <td>{{data.id}}</td>
+                    <td>{{data.name}}</td>
+                    <td>{{data.price}}</td>
+                    <td>{{data.quantity}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}

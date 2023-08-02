@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{%block title%}{%endblock%}</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/admin.css')}}">
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <!--Font-->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!--Icon-->
+  <script src="https://kit.fontawesome.com/97df9bd7c2.js" crossorigin="anonymous"></script>
+
+  <!--Chart-->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+</head>
+
+<body>
+  <div class="side-nav">
+    <h5 class="text-light my-3 px-5">Cartzilla</h5>
+    <ul>
+      <li>
+        <a 
+          href="/admin/dashboard" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+          
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a 
+          href="/admin/orders" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+          
+          <span>Orders</span>
+        </a>
+      </li>
+      <li>
+        <a 
+          href="/admin/inventory" data-mdb-ripple="true" data-mdb-ripple-color="dark">
+         
+          <span>Inventory</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div  style="margin-left: 220px;"> 
+    {%block content%}
+    {%endblock%}
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+{%extends 'admin/index.html'%}
+<!--Title-->
+{%block title%}Products{%endblock%}
+<!--Content-->
+{%block content%}
+<div class="p-4 mx-2">
+    <h3>Orders</h3>
+    <div>
+        <table class="table table-bordered my-4">
+            <thead>
+                <tr>
+                    <th>Order Id</th>
+                    <th>Date</th>
+                    <th>Customer ID</th>
+                    <th>Total</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for data in datas%}
+                <tr>
+                    <td>{{data.id}}</td>
+                    <td>{{data.order_date}}</td>
+                    <td>{{data.user}}</td>
+                    <td>{{data.total}}</td>
+                    <td><a href="/admin/order/{{data.id}}">View</a></td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}

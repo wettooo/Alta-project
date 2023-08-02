@@ -1,0 +1,30 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px !important;
+}
+.side-nav{
+    width:220px;
+    min-height: 100%;
+    position: fixed;
+    background-color: rgb(0, 20, 63);
+}
+.side-nav ul{
+    padding-top:40px;
+
+}
+.side-nav ul li {
+    list-style: none;
+    line-height: 40px;
+    
+}
+
+.side-nav ul li a{
+    color: white;
+    text-decoration: none;
+    padding:10px;
+    display: inline-block;
+    
+}
+.side-nav ul li:hover a{
+    color: rgb(93, 189, 253);
+}

@@ -1,0 +1,68 @@
+{%extends 'ecommerce/index.html'%}
+
+{%block title%}Mobiles{%endblock%}
+
+{%block content%}
+<div>
+  <div>
+    <img class='img-fluid rounded my-4'
+      src="https://img.zoommer.ge/zoommer-images/thumbs/0190445.png"
+      alt="">
+  </div>
+  <div>
+    <h5 class="my-3">Trending <i class="fa-solid fa-fire"></i></h5>
+    <div class="row">
+      {%for datas in data %}
+      <div class="col-3" style="position:relative;">
+        <div class='item-card p-3'>
+          <div class="mt-2 text-center">
+            <img
+              height="200"
+              src="{{datas.img_url}}"
+              alt="Front of men&#039;s Basic Tee in black." class="im">
+          </div>
+          <div class="mt-4">
+            <div>
+              <a href="/product/{{datas.id}}" class="product-link">
+                {{datas.name}}
+              </a>
+              <div>
+                <span class="fa fa-star text-warning"></span>
+                <span class="fa fa-star text-warning"></span>
+                <span class="fa fa-star text-warning"></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star "></span>
+              </div>
+            </div>
+            <h6 class="py-1">$ {{datas.price}}</h6>
+            <div style="position:absolute;top:30%;left:25%;" >
+              <button 
+              class="cart-btn btn btn-primary" 
+              onclick="addcart('{{datas.id}}')"
+              >
+              Add to cart <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+            </div>
+            
+          </div>
+        </div>
+
+      </div>
+      {%endfor%}
+      
+    </div>
+  </div>
+  <div class="my-3">
+    <h5 class="my-3">Best Value Smartphones</h5>
+    <div class="row ">
+      <div class="col-6">
+        <img height="400" width="100%" class=' rounded' src="https://w3layouts.com/wp-content/uploads/2013/06/mobilestore-future.png" alt="">
+      </div>
+      <div class="col-6">
+        <img height="400"  class=' rounded' src="https://w3layouts.com/wp-content/uploads/2013/06/smart_store-future.png" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,36 @@
+{%extends 'admin/index.html'%}
+<!--Title-->
+{%block title%}Add Product{%endblock%}
+<!--Content-->
+{%block content%}
+<div class="w-full p-4 mx-auto">
+    <h1 class="text-3xl">Add Product</h1>
+    <div>
+        <form action="/products" method="POST" enctype="multipart/form-data">
+            <div class="my-3">
+                <label for="">Name</label>
+                <input required class='form-control' type="text" name='name'>
+            </div>
+            <div class="my-3">
+                <label for="">Price</label>
+                <input required class='form-control' type="number" name='price'>
+            </div>
+            <div class="my-3">
+                <label for="">Description</label>
+                <textarea  required rows="5" class='form-control' type="number" name='description'>
+                </textarea>
+            </div>
+            <div class="my-3">
+                <label for="">Inventory</label>
+                <input required class='form-control' type="number" name='inventory'>
+            </div>
+            <div class="my-3">
+                <label for="">Image</label>
+                <input required class='form-control' type="file" name='image'>
+            </div>
+            <button type="submit" class="btn btn-primary my-2">Create</button>
+        </form>
+    </div>
+</div>
+
+{%endblock%}

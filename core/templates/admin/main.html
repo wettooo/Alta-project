@@ -1,0 +1,74 @@
+{%extends 'admin/index.html'%}
+<!--Title-->
+{%block title%}Admin Dashboard{%endblock%}
+<!--Content-->
+{%block content%}
+<div class="p-4 mx-2">
+    <h3>Dashboard</h3>
+    <div class="row my-3">
+        <div class="col-4">
+            <div class="card  p-3">
+                <div>Total Orders</div>
+                <h3>{{data.total_orders}}</h3>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card  p-3">
+                <div>Total Revenue</div>
+                <h3>$ {{data.revenue}}</h3>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card  p-3">
+                <div>Total Customers</div>
+                <h3>{{data.customers}}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row my-4">
+        <div class="col-12">
+            <div class="card p-3">
+                <h6>Sales</h6>
+                <div id="chart"></div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<script>
+    // console.log({{sales|safe}})
+    var data = {salessafe}
+    xaxis = []
+    series = []
+    for (var key in data){
+        console.log(key, data[key])
+        xaxis.push(key)
+        series.push(data[key])
+    }
+
+    var options = {
+        chart: {
+          type: 'area',
+          height:300,
+          zoom: {
+            enabled: false
+          }
+        },
+        series: [{
+          name: 'sales',
+          data: series
+        }],
+        stroke: {
+            curve: 'smooth',
+            width:2
+        },
+        xaxis: {
+          categories: xaxis
+        }
+      }
+      
+      var chart = new ApexCharts(document.querySelector("#chart"), options);
+      
+      chart.render();
+</script>
+{%endblock%}

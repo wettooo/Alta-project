@@ -1,0 +1,70 @@
+{%extends 'ecommerce/index.html'%}
+{%block title%}Product View{%endblock%}
+{%block content%}
+<div>
+    <form action="/order" method="POST">
+        <input type="hidden" id="order-total" name="order-total">
+        <div class="row my-4">
+            <div class="col-4">
+                <div class="card  p-3 ">
+                    <h6>Delivery Address</h6>
+                    <div>{{data.name}}</div>
+                    <div>{{data.address_1}},</div>
+                    <div>{{data.address_2}}, {{data.city}},</div>
+                    <div>{{data.state}} {{data.pincode}}</div>
+                    <div class="my-2">
+                        Phone : {{data.mobile}}
+                    </div>
+                    <div>
+                        <a href="/account">Edit address</a>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-8">
+                <div class="card  p-3">
+                    <h6>Order Summary</h6>
+                    <div class="">
+                        {%for datas in order%}
+                        <div class="row my-3">
+                            <div class="col-2 mx-4"><img src="{{datas.img_url}}" height="80" /></div>
+                            <div class="col-5 text-left">
+                                <div>{{datas.name}}</div>
+                                <div>$ {{datas.price}} × {{datas.quantity}} = <span class="item-total">{{datas.price * datas.quantity}}</span></div>
+                            </div>
+                        </div>
+                        <hr />
+                        {%endfor%}
+                    </div>
+                    <div class="my-4">
+                        <h6>Payment Type</h6>
+                        <select name="" id="" class="">
+                            <option value="">Cash on Delivery</option>
+                        </select>
+                    </div>
+                    <div class="my-4 d-flex">
+                        <button type="reset" class="btn  mx-2 container border">Cancel Order</button>
+                        <button type="submit" class="btn  mx-2  btn-primary container">Place Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    var total = 0
+    const calc_cart_total = () => {
+        
+        
+        items = document.querySelectorAll(".item-total")
+        console.log("FN", items)
+        for (var i = 0; i < items.length; i++) {
+            console.log(items[i].innerHTML)
+            total += parseInt(items[i].innerHTML)
+        }
+        document.getElementById('order-total').value =  total
+    }
+    calc_cart_total()
+    console.log('ToTAL', total)
+</script>
+{%endblock%}

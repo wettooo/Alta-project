@@ -1,0 +1,60 @@
+{%extends 'ecommerce/index.html'%}
+<!--Title-->
+{%block title%}Your Cart{%endblock%}
+<!--Content-->
+{%block content%}
+<div>
+    <h3 class="my-4">Cart <i class="fa-solid fa-cart-shopping "></i></h3>
+    <form action="/cart" method="POST">
+
+        <div class="row">
+            <div class="col-8">
+                <div class="card p-3">
+                    {%for datas in data%}
+                    <div class="row my-3" id="{{datas.id}}_row">
+                        <div class="col-2 mx-4"><img src="{{datas.img_url}}" height="120" /></div>
+                        <div class="col-5 text-left">
+                            <div>{{datas.name}}</div>
+                            <div class="d-flex my-3">
+                                <span class="py-1" >Quantity </span>
+                                <input min="1" class="mx-3 form-control form-control-sm" type="number"
+                                    onchange="cartchange(this, '{{datas.id}}', '{{datas.price}}')"
+                                    name="{{datas.id}}_item_qnt" value="{{datas.quantity}}" />
+                            </div>
+                            <h5 class="item-total" id="{{datas.id}}_item_total">$ {{datas.price * datas.quantity}}</h5>
+                        </div>
+                        <div class="col-2 px-5 text-right">
+                            <i style="font-size:20px" onclick="deleteitem('{{datas.id}}', '{{datas.id}}_row')" class="fa fa-trash text-danger"></i>
+                        </div>
+                    </div>
+                    <hr class="my-0"/>
+                    {%endfor%}
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card text-center p-3">
+                    <h6>Total</h6>
+                    <h3 class="text-gray" id='cart-total'>$ 45000</h3>
+                    <button type="submit" class="btn-primary btn container my-3">Proceed to Checkout</button>
+                </div>
+                
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<script>
+    const calc_cart_total = () => {
+        total = 0
+        items = document.querySelectorAll(".item-total")
+        console.log("FN", items)
+        for (var i = 0; i < items.length; i++) {
+            console.log(items[i].innerHTML.split(' ')[1])
+            total += parseInt(items[i].innerHTML.split(' ')[1])
+        }
+        document.getElementById('cart-total').innerHTML = '$ ' + total
+    }
+    calc_cart_total()
+</script>
+{%endblock%}

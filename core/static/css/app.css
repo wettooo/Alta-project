@@ -1,0 +1,77 @@
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px !important;
+}
+.top-nav{
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 2px 2px 15px rgb(221, 221, 221);
+}
+.top-nav ul{
+    display: flex;
+}
+.top-nav ul li{
+    list-style: none;
+}
+.top-nav ul li a{
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    transition-delay: 0.2s;
+}
+.top-nav ul li a:hover{
+    border-bottom: 3px solid rgb(252, 176, 63);
+}
+.btn-primary{
+    background-color: rgb(255, 149, 100);
+    color:rgb(248, 248, 248);
+    border-color: rgb(255, 134, 78);
+    
+}
+.btn-primary:focus{
+    background-color: rgb(255, 149, 100);
+}
+.btn-outline-primary{
+    color:rgb(248, 248, 248);
+    border-color: #FF9F74;
+}
+.btn-primary:hover{
+    background-color: rgb(255, 149, 100);
+    border-color: rgb(255, 149, 100);
+    box-shadow: 2px 2px 15px rgb(255, 149, 100);
+}
+.item-card{
+    transition: transform .2s; /* Animation */
+
+}
+.item-card:hover{
+    box-shadow: 2px 2px 10px rgb(214, 214, 214);
+    border-radius: 10px;
+
+}
+.item-card:hover div img{
+    opacity: 0.3;
+}
+.cart-btn {
+    display: none;
+}
+.item-card:hover .cart-btn{
+    display: block;
+}
+.product-link{
+    text-decoration: none;
+    color: black;
+}
+.product-link:hover{
+    color:rgb(255, 149, 100);
+}
+.badge{
+    position: absolute;
+    top: -12px;
+    right: -2px;
+    padding: 5px 7px;
+    border-radius: 50%;
+    background: rgb(255, 78, 78);
+    color: white;
+}

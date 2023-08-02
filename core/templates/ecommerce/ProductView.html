@@ -1,0 +1,28 @@
+{%extends 'ecommerce/index.html'%}
+<!--Title-->
+{%block title%}Product View{%endblock%}
+<!--Content-->
+{%block content%}
+<div>
+    <div class="row my-4">
+        <div class="col-6">
+            <img src="/{{data.img_url}}" height="100" alt="Front of men&#039;s Basic Tee in black." class="img-fluid"/>
+        </div>
+        <div class="col-6">
+            <h5>{{data.name}}</h5>
+            <div>
+                <span class="fa fa-star text-warning"></span>
+              <span class="fa fa-star text-warning"></span>
+              <span class="fa fa-star text-warning"></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+            </div>
+            <h5>$ {{data.price}}</h5>
+            <p>{{data.description}}</p>
+            <div>
+                <button onclick="addcart('{{data.id}}')"class="btn btn-primary my-4 container">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
